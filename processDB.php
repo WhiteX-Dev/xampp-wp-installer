@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "777";
+
+// Include MySQL config file
+require_once "config.php";
 
 // Check for POST variables
 if (isset($_POST['dbname'])) {
