@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a New Database with AJAX</title>
+  </head>
+  <body>
+    <h2>Create new MySQL db with the following name:</h2>
+    <form id="ajaxPostForm">
+      <input type="text" name="dbname" id="dbname" />
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="feedback"></div>
+    <br /><br />
+    <script>
+      document
+        .getElementById("ajaxPostForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const dbname = document.getElementById("dbname").value;
+          const params = "dbname=" + dbname;
+
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "processDB.php", true);
+          xhr.setRequestHeader(
+            "Content-type",
+            "application/x-www-form-urlencoded"
+          );
+
+          xhr.onload = function () {
+            if (this.status === 200) {
+              console.log(this.responseText);
+            }
+          };
+          xhr.send(params);
+
+          //give the user feedback
+          document.getElementById("dbname").value = "";
+          document.getElementById("feedback").innerHTML =
+            " Database with the name " + dbname + " has been created!";
+        });
+    </script>
+  </body>
+</html>
