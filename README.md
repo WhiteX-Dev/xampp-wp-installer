@@ -13,8 +13,14 @@ Install WP in XAMPP with a few clicks
 
 ### Status:
 
-App can create a database in the MySQL server that's shipped with XAMPP.
+The app creates a database in the MySQL server that's shipped with XAMPP. A new folder in XAMPP's htdocs directory will be created with the given name (same for the database and the new folder). WP-CLI downloads the installer of the latest WordPress version into this new folder.
 
 ### Next:
 
-Integrating WP-CLI to download and install WordPres.
+Creating a new wp-config.php with WP-CLI then installing a new WordPres instance with the settings.
+
+### Prerequisites and Known Issues:
+
+1. You need an installed XAMPP for this to Work. Obviously.
+2. You need to have your PHP's path in the Environment Variables PATH settings.
+3. Some WP-CLI commands are not working with PHP 8.x, so you need to use 7.x.
