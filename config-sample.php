@@ -6,3 +6,6 @@
 $servername = "localhost"; // MySQL server name
 $username = "root"; // Change this to your username
 $password = ""; // Change this to your password
+
+// XAMPP path
+$xampp_path = "C:/xampp/htdocs/"; // Change this to your XAMPP path

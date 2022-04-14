@@ -30,3 +30,12 @@ if ($conn->query($sql) === TRUE) {
 
 // closing connection
 $conn->close();
+
+// Create a new folder with the name of the database
+$new_folder = $xampp_path . $dbname;
+mkdir($new_folder);
+
+// Download WordPress core
+chdir($new_folder);
+$output = shell_exec('wp core download');
+echo "WordPress core downloaded!";
