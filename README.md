@@ -23,4 +23,5 @@ Creating a new wp-config.php with WP-CLI then installing a new WordPres instance
 
 1. You need an installed XAMPP for this to Work. Obviously.
 2. You need to have your PHP's path in the Environment Variables PATH settings.
-3. Some WP-CLI commands are not working with PHP 8.x, so you need to use 7.x.
+3. You need WP-CLI downloaded / "installed".
+4. Some WP-CLI commands are not working with PHP 8.x, so you need to use 7.x.
