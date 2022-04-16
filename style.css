@@ -1,0 +1,22 @@
+/* CSS stylesheet for the main page */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  max-width: 600px;
+  /* margin: 0 auto; */
+}
+
+#ajaxPostForm input[type="text"],
+#ajaxPostForm input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}

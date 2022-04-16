@@ -5,12 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Create a New Database with AJAX</title>
+    <!-- load style from style.css -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h2>Create new MySQL db with the following name:</h2>
+    <h2>Install WordPress with one click</h2>
+    <p>
+      Add a name for your WordPress installation. This name will be used for
+      your new <strong>database</strong> and the <strong>folder</strong> inside
+      your htdocs folder in XAMPP.
+    </p>
     <form id="ajaxPostForm">
-      <input type="text" name="dbname" id="dbname" />
-      <input type="submit" value="Submit" />
+      <input type="text" name="name" id="name" placeholder="Name here..." />
+      <input type="submit" value="Create WP!" />
     </form>
     <div id="feedback"></div>
     <br /><br />
@@ -20,8 +27,8 @@
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
-          const dbname = document.getElementById("dbname").value;
-          const params = "dbname=" + dbname;
+          const name = document.getElementById("name").value;
+          const params = "name=" + name;
 
           const xhr = new XMLHttpRequest();
           xhr.open("POST", "process.php", true);
@@ -32,15 +39,16 @@
 
           xhr.onload = function () {
             if (this.status === 200) {
-              console.log(this.responseText);
+              //console.log(this.responseText);
+              //Final feedback from process.php
+              document.getElementById("feedback").innerHTML = xhr.responseText;
             }
           };
           xhr.send(params);
 
           //give the user feedback
-          document.getElementById("dbname").value = "";
-          document.getElementById("feedback").innerHTML =
-            " Database with the name " + dbname + " has been created!";
+          document.getElementById("name").value = "";
+          document.getElementById("feedback").innerHTML = "Processing...";
         });
     </script>
   </body>

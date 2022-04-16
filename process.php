@@ -16,14 +16,14 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 // Storing the database name
-if (isset($_POST['dbname'])) {
-  $dbname = mysqli_real_escape_string($conn, $_POST['dbname']);
+if (isset($_POST['name'])) {
+  $name = mysqli_real_escape_string($conn, $_POST['name']);
 }
 
 // Creating a database named by the variable $dbname
-$sql = "CREATE DATABASE $dbname";
+$sql = "CREATE DATABASE $name";
 if ($conn->query($sql) === TRUE) {
-  echo "Database created successfully with the name " . $dbname . "!";
+  echo "Database created successfully with the name <strong>" . $name . "</strong>!" . "<br>";
 } else {
   echo "Error creating database: " . $conn->error;
 }
@@ -32,7 +32,7 @@ if ($conn->query($sql) === TRUE) {
 $conn->close();
 
 // Create a new folder with the name of the database
-$new_folder = $xampp_path . $dbname;
+$new_folder = $xampp_path . $name;
 mkdir($new_folder);
 
 // Download WordPress core
