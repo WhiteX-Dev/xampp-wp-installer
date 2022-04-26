@@ -18,7 +18,7 @@
     <form id="ajaxPostForm">
       <input type="text" name="name" id="name" placeholder="Name here..." />
       <p id="invalidformat" style="color: red; display: none; ">Use caracters a-z,0-9,-,_ in your database name.</p>
-      <input type="submit" value="Create WP!" />
+      <input type="submit" id="submitbtn" value="Create WP!" />
     </form>
     <div id="feedback"></div>
     <br /><br />
@@ -32,7 +32,12 @@
             document.getElementById("invalidformat").style.display = 'none'
           } else {
             document.getElementById("invalidformat").style.display = 'block'
-          }
+          } 
+         if (valid) {
+          document.getElementById("submitbtn").disabled = false;
+         } else {
+          document.getElementById("submitbtn").disabled = true;
+         }
         });
       document
         .getElementById("ajaxPostForm")
