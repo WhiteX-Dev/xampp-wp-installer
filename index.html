@@ -24,7 +24,7 @@
     <br /><br />
     <script>
        document.getElementById("name").addEventListener('input',function(e){
-          var pattern = /^[\w-]{1,30}$/;
+          var pattern = /^[a-z-_0-9]{1,30}$/;
           var currentValue = e.target.value;
           var valid = pattern.test(currentValue);
 
