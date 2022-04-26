@@ -34,10 +34,16 @@
             document.getElementById("invalidformat").style.display = 'block'
           } 
          if (valid) {
-          document.getElementById("submitbtn").disabled = false;
-         } else {
           document.getElementById("submitbtn").disabled = true;
+         } else {
+          document.getElementById("submitbtn").disabled = false;
          }
+         if(document.getElementById("name").value.length == 0) {
+          document.getElementById("invalidformat").style.display = 'none'
+          document.getElementById("submitbtn").disabled = true;
+
+         }
+
         });
       document
         .getElementById("ajaxPostForm")
