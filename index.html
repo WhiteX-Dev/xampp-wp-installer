@@ -7,6 +7,8 @@
     <title>Create a New Database with AJAX</title>
     <!-- load style from style.css -->
     <link rel="stylesheet" href="style.css" />
+    <!-- load javascript from functions.js -->
+    <script src="functions.js"></script>
   </head>
   <body>
     <h2>Install WordPress with one click</h2>
@@ -17,63 +19,13 @@
     </p>
     <form id="ajaxPostForm">
       <input type="text" name="name" id="name" placeholder="Name here..." />
-      <p id="invalidformat" style="color: red; display: none; ">Use caracters a-z,0-9,-,_ in your database name.</p>
+
       <input type="submit" id="submitbtn" value="Create WP!" />
     </form>
+    <p id="invalidformat" style="color: red; display: none">
+      Use caracters a-z,0-9,-,_ in your database name.
+    </p>
     <div id="feedback"></div>
     <br /><br />
-    <script>
-      document.getElementById("submitbtn").disabled = true;
-       document.getElementById("name").addEventListener('input',function(e){
-          var pattern = /^[a-z-_0-9]{1,30}$/;
-          var currentValue = e.target.value;
-          var valid = pattern.test(currentValue);
-
-          if(valid) {
-            document.getElementById("invalidformat").style.display = 'none';
-          } else {
-            document.getElementById("invalidformat").style.display = 'block';
-          } 
-         if (valid) {
-          document.getElementById("submitbtn").disabled = false;
-         } else {
-          document.getElementById("submitbtn").disabled = true;
-         }
-         if(document.getElementById("name").value.length == 0) {
-          document.getElementById("invalidformat").style.display = 'none';
-          document.getElementById("submitbtn").disabled = true;
-
-         }
-
-        });
-      document
-        .getElementById("ajaxPostForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const name = document.getElementById("name").value;
-          const params = "name=" + name;
-
-          const xhr = new XMLHttpRequest();
-          xhr.open("POST", "process.php", true);
-          xhr.setRequestHeader(
-            "Content-type",
-            "application/x-www-form-urlencoded"
-          );
-
-          xhr.onload = function () {
-            if (this.status === 200) {
-              //console.log(this.responseText);
-              //Final feedback from process.php
-              document.getElementById("feedback").innerHTML = xhr.responseText;
-            }
-          };
-          xhr.send(params);
-
-          //give the user feedback
-          document.getElementById("name").value = "";
-          document.getElementById("feedback").innerHTML = "Processing...";
-        });
-    </script>
   </body>
 </html>
